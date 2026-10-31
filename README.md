@@ -6,6 +6,12 @@ A Windows tray utility that mutes/unmutes the default microphone while you hold 
 button (or toggles it, if you prefer). Built with .NET 9 + WinForms, global input via low-level
 Win32 hooks, and microphone control via the Core Audio API.
 
+## Screenshots
+
+| Settings | Tray menu |
+| --- | --- |
+| ![Settings window](docs/settings.png) | ![Tray menu](docs/tray-menu.png) |
+
 ## Build and run
 
 ```powershell
