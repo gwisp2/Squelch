@@ -15,6 +15,7 @@
     <ApplicationUseCompatibleTextRendering>false</ApplicationUseCompatibleTextRendering>
     <Version>0.1.0</Version>
     <Product>Squelch</Product>
+    <ApplicationIcon>assets\squelch.ico</ApplicationIcon>
     <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
     <!-- NAudio reaches Core Audio through COM interfaces the trimmer cannot see,
          so keep trimming off unless you are prepared to root those types. -->
@@ -29,6 +30,7 @@
     <EmbeddedResource Include="assets\tray-idle.png" />
     <EmbeddedResource Include="assets\tray-active.png" />
     <EmbeddedResource Include="assets\tray-disabled.png" />
+    <EmbeddedResource Include="assets\squelch.ico" />
   </ItemGroup>
 
 </Project>

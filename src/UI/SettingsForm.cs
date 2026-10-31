@@ -8,6 +8,8 @@ namespace Squelch.UI;
 /// </summary>
 public sealed class SettingsForm : Form
 {
+    private static readonly Lazy<Icon> AppIcon = new(LoadAppIcon);
+
     private readonly AppSettings _working;
     private readonly SquelchEngine _engine;
 
@@ -24,6 +26,7 @@ public sealed class SettingsForm : Form
         _engine = engine;
 
         Text = "Squelch - Settings";
+        Icon = AppIcon.Value;
         FormBorderStyle = FormBorderStyle.FixedDialog;
         MaximizeBox = false;
         MinimizeBox = false;
@@ -51,6 +54,17 @@ public sealed class SettingsForm : Form
 
     /// <summary>The edited settings. Only meaningful when the dialog returned OK.</summary>
     public AppSettings Result => _working;
+
+    private static Icon LoadAppIcon()
+    {
+        var assembly = typeof(SettingsForm).Assembly;
+        var resourceName = assembly.GetManifestResourceNames()
+            .FirstOrDefault(name => name.EndsWith(".squelch.ico", StringComparison.OrdinalIgnoreCase))
+            ?? throw new InvalidOperationException("Embedded application icon 'squelch.ico' is missing.");
+
+        using var stream = assembly.GetManifestResourceStream(resourceName)!;
+        return new Icon(stream);
+    }
 
     private TableLayoutPanel BuildOptionGrid()
     {
